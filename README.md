@@ -18,7 +18,7 @@ Find shortest path between two nodes using A-star search.
 
 ## Examples
 
-<details id="example$web" title="web" open><summary><span><a href="#example$web">#</a></span>  <code><strong>web</strong></code></summary>  <ul>    <details id="source$web" title="web source code" ><summary><span><a href="#source$web">#</a></span>  <code><strong>view source</strong></code></summary>  <a href="example/web.ts">example/web.ts</a>  <p>
+<details id="example$web" title="web" open><summary><span><a href="#example$web">#</a></span>  <code><strong>web</strong></code></summary>  <ul>  <p><a href="https://stagas.github.io/find-shortest-path/example/web.html"><strong>Try it live</strong></a></p>  <details id="source$web" title="web source code" ><summary><span><a href="#source$web">#</a></span>  <code><strong>view source</strong></code></summary>  <a href="example/web.ts">example/web.ts</a>  <p>
 
 ```ts
 import { Line, Point, Polygon, Rect } from 'geometrik'
@@ -66,24 +66,6 @@ declare const console: Console & {
   edit: <T>(object: T, callback: (changed: T) => void) => void
 }
 
-// const multipliers = {
-//   distance: 0.45,
-//   heuristic: 20.65,
-// }
-
-// window.onload = () => {
-//   console.edit(multipliers, changed => {
-//     console.log('yes changed', changed)
-//     Object.assign(multipliers, changed)
-
-//     points = solve()
-//     console.table(points.meta)
-//     if (points.length > 2) {
-//       path.setAttribute('d', Point.toSVGPath(points))
-//     }
-//   })
-// }
-
 const solve = () => {
   const intersects = (a: Point, b: Point) => {
     const line = new Line(a, b)
@@ -127,7 +109,6 @@ const solve = () => {
     ],
     neighbors(p) {
       return [
-        // TODO: we can try the shortest directions first
         p.translate(+step, 0),
         p.translate(0, +step),
         p.translate(-step, 0),
