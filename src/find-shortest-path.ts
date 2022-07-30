@@ -140,7 +140,7 @@ export const findShortestPath = <T>(
   let iterations = 0
   while (++iterations < maxIterations && (current = agent.peek())) {
     if (accept(current, goal, agent.from, agent.from)) {
-      const result = [goal].concat(backtrace(current, agent.from)) as ShortestPath<T>
+      const result = [goal].concat(backtrace(current, agent.from)).reverse() as ShortestPath<T>
       result.meta = {
         attempt,
         iterations,
@@ -223,11 +223,8 @@ export const findShortestPathBi = <T>({
       let startPath = backtrace(lastStart, startAgent.from).reverse()
       let goalPath = backtrace(lastGoal, goalAgent.from)
 
-      // const joined = accept(startPath.at(-1)!, goalPath[0])
-      // if (joined) {
       if (goalPath.length > 1) goalPath = goalPath.slice(1)
       else startPath = startPath.slice(0, -1)
-      // }
 
       const result = startPath.concat(goalPath) as ShortestPath<T>
       result.meta = {

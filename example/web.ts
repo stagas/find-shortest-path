@@ -1,4 +1,4 @@
-import { Line, Point, Rect } from 'geometrik'
+import { Line, Point, Polygon, Rect } from 'geometrik'
 import {
   findShortestPath,
   // findShortestPathBi,
@@ -142,7 +142,7 @@ if (points) {
   svg.setAttribute('height', '' + window.innerHeight)
   path.setAttribute('stroke', '#fff')
   path.setAttribute('stroke-width', '2')
-  path.setAttribute('d', Point.toSVGPath(points))
+  path.setAttribute('d', Polygon.toSVGPath(points))
   svg.appendChild(path)
   document.body.appendChild(svg)
   document.body.onpointermove = e => {
@@ -160,7 +160,7 @@ if (points) {
       points = solve()
       console.table(points.meta)
       if (points.length > 2) {
-        path.setAttribute('d', Point.toSVGPath(points))
+        path.setAttribute('d', Polygon.toSVGPath(points))
       }
     }
   }
