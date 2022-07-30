@@ -43,24 +43,6 @@ declare const console: Console & {
   edit: <T>(object: T, callback: (changed: T) => void) => void
 }
 
-// const multipliers = {
-//   distance: 0.45,
-//   heuristic: 20.65,
-// }
-
-// window.onload = () => {
-//   console.edit(multipliers, changed => {
-//     console.log('yes changed', changed)
-//     Object.assign(multipliers, changed)
-
-//     points = solve()
-//     console.table(points.meta)
-//     if (points.length > 2) {
-//       path.setAttribute('d', Point.toSVGPath(points))
-//     }
-//   })
-// }
-
 const solve = () => {
   const intersects = (a: Point, b: Point) => {
     const line = new Line(a, b)
@@ -104,7 +86,6 @@ const solve = () => {
     ],
     neighbors(p) {
       return [
-        // TODO: we can try the shortest directions first
         p.translate(+step, 0),
         p.translate(0, +step),
         p.translate(-step, 0),
